@@ -1,0 +1,48 @@
+<%- layout('layouts/main') %>
+
+
+<div class="container px-4">
+    <div class="row gx-5">
+      <div class="col">
+       <div class="p-3 border bg-light">
+        
+        <h2>Create</h2>
+
+       </div>
+      </div> 
+    </div>
+  </div>
+
+  <form action="/save" method="post">
+        <div class="container px-4">
+            <div class="row gx-5">
+            <div class="col">
+            <div class="p-3 border bg-light">
+                
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="inputTitle" name="title" placeholder="name@example.com" required>
+                    <label for="floatingInput">Title:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <!--
+                    <input type="text" class="form-control" id="inputBody" name="body" placeholder="Body" required>
+                    -->
+                    <textarea class="form-control" id="body" name="body" cols="65"  rows="12" maxlength="300" required></textarea>
+                    <label for="floatingPassword">Body:</label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="hidden" class="form-control" style="display: block;" id="userCreate" name="userCreate" placeholder="Body" value="<%= user._id%>">    
+                </div>
+            </div>
+            <div class="p-3 border bg-light">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-primary  btn-lg me-md-2">Save</button>
+                    <button type="button" class="btn btn-secondary btn-lg">Cancel</button>
+                    </div>
+            </div>
+            </div> 
+            </div>
+        </div>
+  </form>
+

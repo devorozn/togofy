@@ -1,0 +1,84 @@
+<%- layout('layouts/main') %>
+
+<style>
+   
+</style>
+
+<div class="container mt-5 mb-3">
+    <div class="row">
+        <% if(news.length>0) { %>
+            <% for(var i=0; i<news.length;i++) { %>
+            <div class="col-md-4">
+                <div class="card p-3 mb-2">
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
+                            <div class="ms-2 c-details">
+                                <h6 class="mb-0">
+                                    <%= news[i].title%> 
+                                </h6> 
+                                <span>
+                                    <% if(user.rol =='edit') { %>
+                                        <a href="edit/<%= news[i]._id%>" class="btn btn-primary  me-md-2">Edit</a>                                
+                                    <% } else { %>   
+                                        <% if( user.playlist.length >0) { %>
+                                            <% if(user.playlist.find( element => element.id == news[i]._id+'' )  ) { %>
+                                                <form id="formA<%= news[i]._id%>" action="/unlike/<%= user._id%>/<%= news[i]._id%>" method="post" title="unlike" >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill like" viewBox="0 0 16 16"
+                                                    onclick="document.getElementById('formA<%= news[i]._id%>').submit();" style="cursor: pointer;" title="unlike" >
+                                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                                      </svg>                                                    
+                                                    <button class="btn btn-info  btn-lg me-md-2"  style="display: none;" type="submit">UnLike</button>
+                                                </form>  
+                                            <% } else { %>
+                                                <form id="formB<%= news[i]._id%>" action="/like/<%= user._id%>/<%= news[i]._id%>" method="post" title="like" >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16"
+                                                    onclick="document.getElementById('formB<%= news[i]._id%>').submit();" style="cursor: pointer;">
+                                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                                      </svg>
+                                                    <button class="btn btn-info  btn-lg me-md-2" style="display: none;" type="submit">Like</button>
+                                                </form>
+                                            <% } %> 
+                                        <% } else { %>
+                                            <form id="formC<%= news[i]._id%>" action="/like/<%= user._id%>/<%= news[i]._id%>" method="post" title="like"  >
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16"
+                                                onclick="document.getElementById('formC<%= news[i]._id%>').submit();" style="cursor: pointer;">
+                                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                                                    
+                                                    />
+                                                  </svg>
+                                                <button class="btn btn-info  btn-lg me-md-2" style="display: none;" type="submit">Like</button>
+                                            </form>
+                                        <% } %>                                   
+                                    <% } %>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="badge"> <span>Design</span> </div>
+                    </div>
+                    <div class="mt-5">
+                        <h3 class="heading">
+                            <p style="font-size: 12px;" >
+                                <%= news[i].body%> 
+                            </p>    
+                        </h3>
+                        <div class="mt-5">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="mt-3"> <span class="text1">
+                                <p style="font-size: 10px;"> <%= news[i].dateCreate%> </p>
+                                 <span class="text2">
+                                   
+                                 </span></span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
+        <% } else { %>
+            <div> News is empty.</div>
+            <% } %>
+    </div>
+</div>

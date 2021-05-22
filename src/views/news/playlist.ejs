@@ -1,0 +1,34 @@
+<%- layout('layouts/main') %>
+ 
+<div class="container mt-5 mb-3">
+    <div class="row">
+        <% if(news.length>0) { %>
+            <% if( user.playlist.length >0) { %>
+                <% for(var i=0; i<news.length;i++) { %>
+                
+                    <% if( user.playlist.length >0) { %>
+                        <% if(user.playlist.find( element => element.id == news[i]._id+'' )  ) { %>
+                            <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <%= news[i].title %>
+                                </div>
+                                <div class="card-body">
+                                  <h5 class="card-title">Special title treatment</h5>
+                                  <p class="card-text"><%= news[i].body%> </p> 
+                                  <form id="formA<%= news[i]._id%>" action="/unlike/<%= user._id%>/<%= news[i]._id%>" method="post" title="unlike" >                                                                      
+                                    <button class="btn btn-primary  btn-lg me-md-2"  style="display: block;" type="submit">UnLike</button>
+                                </form> 
+                                </div>
+                              </div>
+                            </div> 
+                        <% } %>     
+                    <% } %>                                   
+                
+                <% } %>
+            <% } else { %>
+                <div>Playlist is empty.</div>
+            <% } %>
+        <% } %>    
+    </div>
+</div>

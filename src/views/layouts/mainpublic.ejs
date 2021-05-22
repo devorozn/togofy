@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Togofy</title>
+  <link href="https://bootswatch.com/5/pulse/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <style>
+    .alert-info {
+        color: #ffffff !important;
+        background-color: #8261b5;
+        border-color: #8261b5;
+    }
+    .like{
+        cursor: pointer !important;
+        background-color: #ffffff !important;
+        color: #593196 !important;
+    }
+</style>
+</head>
+<body> 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Togofy</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+
+            <li class="nav-item">
+                <a class="nav-link active" href="/signin">Signin
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Signup</a>
+              </li> 
+          </ul> 
+      </div>
+    </div>
+  </nav>
+  <%if (signinMessage.length >0) {%>    
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>TogoFy</strong>  <p><%= signinMessage %></p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+  <%if (signupMessage.length >0) {%>    
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>TogoFy</strong>  <p><%= signupMessage %></p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+ 
+  <%- body %>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<%- layout('layouts/main') %>
+    <div class="container px-4">
+        <div class="row gx-5">
+            <div class="col">
+                <div class="p-3 border bg-light">
+                    <h2>Edit</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form action="/update/<%= news._id%>" method="post">
+        <div class="container px-4">
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="inputTitle" name="title"
+                                placeholder="name@example.com" value="<%= news.title %>">
+                            <label for="floatingInput">title</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="inputBody" name="body" placeholder="Body"
+                                value="<%= news.body %>">
+                            <label for="floatingPassword">body</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="inputBody" name="body" placeholder="Body"
+                                disabled value="<%= user._id%>">
+                            <label for="floatingPassword">User </label>
+                        </div>
+                    </div>
+                    <div class="p-3 border bg-light">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary  btn-lg me-md-2">Save</button>
+                            <a href="/home" class="btn btn-secondary btn-lg">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="container px-4">
+        <div class="row gx-5">
+            <div class="col">
+                <div class="p-3 border bg-light">
+                    <form action="/delete/<%= news._id%>" method="post" onsubmit="return confirm('Did you really delete this news?');">
+                        <button class="btn btn-danger  btn-lg me-md-2" type="submit">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
