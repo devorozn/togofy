@@ -55,6 +55,14 @@ Carpeta raiz(src): contiene archivo
 En el archivo Togofy.pdf se describe las ventanas y vistas del aplicativo.
 
 
+### Run del aplicativo:
+
+* Clonar este repo https://github.com/devorozn/togofy.git
+* Desde una terminar instalar las dependencias con npm install
+* Ejcutar el comando run en dev npm run dev
+* Desde un browser entrar ala url del aplicativo gttp://localhost:3000
+
+
 ## Autor ✒️
 
 * **Juan Carlos Orozco N.** 😊
